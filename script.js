@@ -10,6 +10,8 @@ const resultEl = document.getElementById("result");
 const winsEl = document.getElementById("wins");
 const playsEl = document.getElementById("plays");
 const streakEl = document.getElementById("streak");
+const gameSelect = document.getElementById("game-select");
+const randomBtn = document.getElementById("random");
 
 const baseTypes = [
   {
@@ -160,6 +162,7 @@ function buildUI(type) {
     const btn = document.createElement("button");
     btn.className = "primary";
     btn.textContent = "Ready";
+    btn.type = "button";
     btn.disabled = true;
     uiEl.append(status, btn);
     const delay = rand(800, 2400);
@@ -186,6 +189,7 @@ function buildUI(type) {
     const btn = document.createElement("button");
     btn.className = "primary";
     btn.textContent = "Click!";
+    btn.type = "button";
     const timer = document.createElement("div");
     timer.textContent = "Time: 3.0s";
     uiEl.append(counter, btn, timer);
@@ -403,6 +407,30 @@ function pick(list) {
   return list[Math.floor(Math.random() * list.length)];
 }
 
+function renderGameSelect() {
+  gameSelect.innerHTML = "";
+  games.forEach((game) => {
+    const option = document.createElement("option");
+    option.value = game.id;
+    option.textContent = `${game.id}. ${game.name}`;
+    gameSelect.appendChild(option);
+  });
+}
+
+function handleSelectChange() {
+  const selectedId = Number(gameSelect.value);
+  const game = games.find((entry) => entry.id === selectedId);
+  if (game) {
+    openGame(game);
+  }
+}
+
+function handleRandom() {
+  const game = pick(games);
+  gameSelect.value = String(game.id);
+  openGame(game);
+}
+
 games.forEach((game) => {
   const card = document.createElement("div");
   card.className = "card";
@@ -412,11 +440,21 @@ games.forEach((game) => {
   desc.textContent = game.description;
   const button = document.createElement("button");
   button.textContent = "Play";
+  button.type = "button";
   button.addEventListener("click", () => openGame(game));
   card.append(name, desc, button);
+  card.addEventListener("click", (event) => {
+    if (event.target.tagName !== "BUTTON") {
+      openGame(game);
+    }
+  });
   grid.appendChild(card);
 });
 
+renderGameSelect();
+
+gameSelect.addEventListener("change", handleSelectChange);
+randomBtn.addEventListener("click", handleRandom);
 closeBtn.addEventListener("click", closeGame);
 playBtn.addEventListener("click", handlePlay);
 resetBtn.addEventListener("click", handleReset);

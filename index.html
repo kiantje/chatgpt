@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>100 Micro Minigames</title>
     <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
   </head>
   <body>
     <header class="hero">
@@ -33,10 +34,21 @@
 
     <main>
       <section class="panel">
-        <h2>Choose a game</h2>
-        <p class="hint">
-          Each card is a tiny challenge. Hit play to launch the game panel.
-        </p>
+        <div class="panel-header">
+          <div>
+            <h2>Choose a game</h2>
+            <p class="hint">
+              Each card is a tiny challenge. Hit play to launch the game panel.
+            </p>
+          </div>
+          <div class="picker">
+            <label for="game-select">Jump to game</label>
+            <div class="picker-controls">
+              <select id="game-select"></select>
+              <button id="random" class="ghost">Random</button>
+            </div>
+          </div>
+        </div>
         <div id="game-grid" class="grid"></div>
       </section>
     </main>
@@ -48,13 +60,11 @@
         <p id="game-desc"></p>
         <div id="game-ui" class="game-ui"></div>
         <div class="actions">
-          <button id="play" class="primary">Play</button>
-          <button id="reset" class="ghost">Reset</button>
+          <button id="play" class="primary" type="button">Play</button>
+          <button id="reset" class="ghost" type="button">Reset</button>
         </div>
         <div id="result" class="result"></div>
       </div>
     </div>
-
-    <script src="script.js"></script>
   </body>
 </html>

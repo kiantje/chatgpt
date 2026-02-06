@@ -73,8 +73,32 @@ main {
   border: 1px solid rgba(90, 110, 220, 0.2);
 }
 
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
 .hint {
   color: #9fb0f8;
+}
+
+.picker {
+  display: grid;
+  gap: 0.5rem;
+  min-width: min(320px, 100%);
+}
+
+.picker label {
+  font-size: 0.85rem;
+  color: #9fb0f8;
+}
+
+.picker-controls {
+  display: flex;
+  gap: 0.75rem;
 }
 
 .grid {
@@ -93,6 +117,12 @@ main {
   flex-direction: column;
   gap: 0.75rem;
   min-height: 140px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(120, 140, 255, 0.4);
 }
 
 .card h4 {
@@ -158,12 +188,14 @@ main {
 }
 
 .game-ui input,
-.game-ui select {
+.game-ui select,
+.picker select {
   padding: 0.6rem 0.8rem;
   border-radius: 0.5rem;
   border: 1px solid rgba(120, 140, 255, 0.2);
   background: #0b1020;
   color: white;
+  flex: 1;
 }
 
 .actions {
@@ -210,5 +242,9 @@ main {
   .stats {
     grid-auto-flow: row;
     width: 100%;
+  }
+
+  .picker-controls {
+    flex-direction: column;
   }
 }
