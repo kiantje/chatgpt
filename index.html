@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>100 Micro Minigames</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div>
+        <p class="eyebrow">One Cartridge</p>
+        <h1>100 Micro Minigames</h1>
+        <p class="subtitle">
+          Pick any micro challenge. Play in seconds. Stack quick wins.
+        </p>
+      </div>
+      <div class="stats">
+        <div>
+          <span id="wins">0</span>
+          <small>Wins</small>
+        </div>
+        <div>
+          <span id="plays">0</span>
+          <small>Plays</small>
+        </div>
+        <div>
+          <span id="streak">0</span>
+          <small>Win Streak</small>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="panel">
+        <h2>Choose a game</h2>
+        <p class="hint">
+          Each card is a tiny challenge. Hit play to launch the game panel.
+        </p>
+        <div id="game-grid" class="grid"></div>
+      </section>
+    </main>
+
+    <div id="overlay" class="overlay hidden" aria-hidden="true">
+      <div class="modal">
+        <button id="close" class="close" aria-label="Close">✕</button>
+        <h3 id="game-title"></h3>
+        <p id="game-desc"></p>
+        <div id="game-ui" class="game-ui"></div>
+        <div class="actions">
+          <button id="play" class="primary">Play</button>
+          <button id="reset" class="ghost">Reset</button>
+        </div>
+        <div id="result" class="result"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
